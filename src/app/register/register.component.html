@@ -1,0 +1,76 @@
+<div class="py-6 bg-gradient-to-r from-green-400 to-blue-500">
+    <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+        <div class="hidden lg:block lg:w-1/2 bg-cover"
+            style="background-image:url('https://images.unsplash.com/photo-1546514714-df0ccc50d7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')">
+        </div>
+
+        <div class="w-full p-8 lg:w-1/2">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="mt-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">First Name</label>
+                    <input formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                        class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                        type="text">
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                    </div>
+
+                </div>
+                <div class="mt-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
+                    <input formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+                        class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                        type="text">
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                    <input formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                        class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                        type="email">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
+                    <input formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+                        class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                        type="number"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        maxlength="10">
+                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                        <div *ngIf="f.phone.errors.required">Phone number is required</div>
+
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex justify-between">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                    </div>
+                    <input formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                        class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                        type="password">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <button
+                        class="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">Register</button>
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="border-b w-1/5 md:w-1/4"></span>
+                    <a routerLink="/" class="text-xs text-gray-500 uppercase">or login</a>
+                    <span class="border-b w-1/5 md:w-1/4"></span>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
